@@ -1,4 +1,5 @@
 #!/bin/bash
+# This file is auto-generated. Do not edit directly!
 set -eo pipefail
 
 # if command does not start with mongo-express, run the command instead of the entrypoint
