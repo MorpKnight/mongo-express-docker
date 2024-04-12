@@ -8,9 +8,12 @@ services:
   mongoexpress:
     image: mongo-express
     ports:
-      - "8081:8081"
+      - "8082:8082"
     environment: 
-      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo:exercise2024@exercise_execisedb:27017
+      - ME_CONFIG_BASICAUTH_USERNAME=exercise
+      - ME_CONFIG_BASICAUTH_PASSWORD=exercise2024
+      - ME_CONFIG_BASICAUTH=true
     depends_on:
       - mongo
     restart: always
