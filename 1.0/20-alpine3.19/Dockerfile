@@ -40,7 +40,7 @@ ENV ME_CONFIG_MONGODB_URL="mongodb://mongo:exercise2024@exercise_execisedb:27017
     ME_CONFIG_BASICAUTH_USERNAME="exercise" \
     ME_CONFIG_BASICAUTH_PASSWORD="exercise2024"
 
-EXPOSE 8081
+EXPOSE 8082
 COPY docker-entrypoint.sh /
 ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh"]
 CMD ["mongo-express"]
