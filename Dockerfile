@@ -1,6 +1,12 @@
+#
+# NOTE: THIS DOCKERFILE IS GENERATED VIA "apply-templates.sh"
+#
+# PLEASE DO NOT EDIT IT DIRECTLY.
+#
+
 # https://nodejs.org/en/about/releases/
 # https://github.com/nodejs/Release#readme
-FROM node:{{ env.variant }}
+FROM node:20-alpine3.19
 
 RUN set -eux; \
     apk add --no-cache \
@@ -11,7 +17,7 @@ RUN set -eux; \
 WORKDIR /app
 
 ARG MONGO_EXPRESS_REPOSITORY=mongo-express/mongo-express
-ARG MONGO_EXPRESS_VERSION=release/v{{ .version }}
+ARG MONGO_EXPRESS_VERSION=release/v1.0.2
 
 RUN set -eux; \
     apk add --no-cache --virtual .me-fetch-deps git; \
@@ -34,7 +40,7 @@ ENV ME_CONFIG_MONGODB_URL="mongodb://mongo:exercise2024@exercise_execisedb:27017
     ME_CONFIG_BASICAUTH_USERNAME="exercise" \
     ME_CONFIG_BASICAUTH_PASSWORD="exercise2024"
 
-EXPOSE 8082
+EXPOSE 8081
 COPY docker-entrypoint.sh /
 ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh"]
 CMD ["mongo-express"]
